@@ -1108,6 +1108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d4ae18d90f78e459cb3b28f3a91182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _LeftA: {fileID: 827725108}
+  _RightA: {fileID: 740218536}
+  _LeftL: {fileID: 720406906}
+  _RightL: {fileID: 721950014}
 --- !u!65 &1024811888
 BoxCollider:
   m_ObjectHideFlags: 0
