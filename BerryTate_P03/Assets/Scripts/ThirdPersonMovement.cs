@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
 
     [SerializeField] CharacterController controller;
     [SerializeField] Transform cam;
+    [SerializeField] CinemachineFreeLook vCam;
 
     float speed = 6;
 
@@ -16,13 +18,20 @@ public class ThirdPersonMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float Hori= Input.GetAxisRaw("Horizontal");
+        movement();
+        aiming();
+    }
+
+    void movement()
+    {
+        float Hori = Input.GetAxisRaw("Horizontal");
         float Vert = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(Hori, 0, Vert).normalized;
 
@@ -35,5 +44,16 @@ public class ThirdPersonMovement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0, targetAngle, 0) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
+    }
+
+    void aiming()
+    {
+        //chaning the direction player is facing and fov of lense to give aiming effect
+        if (Input.GetMouseButton(1))
+        {
+            transform.rotation = cam.rotation;
+            vCam.m_Lens.FieldOfView = 30;
+        }
+        else { vCam.m_Lens.FieldOfView = 40; }
     }
 }

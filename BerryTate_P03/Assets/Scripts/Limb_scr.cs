@@ -5,14 +5,14 @@ using UnityEngine;
 public class Limb_scr : MonoBehaviour
 {
 
-    int _LHealth = 100;
+    int _LHealth = 3;
 
     // Update is called once per frame
     void Update()
     {
         if (_LHealth <= 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

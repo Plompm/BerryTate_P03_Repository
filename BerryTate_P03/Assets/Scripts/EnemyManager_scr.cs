@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum _EState { Full, misOneLeg, misOneArm, Arms, Legs, OneLegOneArm, oneLeg, oneArm, none };
+
 public class EnemyManager_scr : MonoBehaviour
 {
-
-    enum _EState { Full, misOneLeg, misOneArm, Arms, Legs, OneLegOneArm, oneLeg, oneArm, none};
-
-    _EState _EnemyS;
+    public _EState _EnemyS;
 
     [SerializeField] GameObject _LeftA;
     [SerializeField] GameObject _RightA;
