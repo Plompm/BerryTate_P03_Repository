@@ -12,6 +12,11 @@ public class GunManager_scr : MonoBehaviour
     [SerializeField] GameObject _bloodVFX;
     [SerializeField] GameObject _ammoUI;
     [SerializeField] Text ammoCounter;
+    [SerializeField] AudioClip _shot;
+    [SerializeField] AudioClip _switchPos;
+    [SerializeField] AudioClip _aim;
+
+    AudioSource ad;
 
     int ammo = 11;
 
@@ -27,6 +32,8 @@ public class GunManager_scr : MonoBehaviour
         {
             lasers[i] = GameObject.Find("laser" + i);
         }
+
+        ad = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,6 +66,12 @@ public class GunManager_scr : MonoBehaviour
 
         directionSwitch();
         reloding();
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            ad.clip = _aim;
+            ad.Play();
+        }
     }
 
     void shooting()
@@ -66,7 +79,11 @@ public class GunManager_scr : MonoBehaviour
         //mouse buttonleft pressed
         if (Input.GetMouseButtonDown(0) && ammo > 0)
         {
+            //ThirdPersonMovement.Instance.screenShake(5f,0.1f);
             ammo -= 1;
+            ad.clip = _shot;
+            ad.Play();
+
             for (int i = 0; i < 3; i++)
             {
                 //getting a bool from the laser script to see if raycast hit anything
@@ -79,6 +96,7 @@ public class GunManager_scr : MonoBehaviour
                     if (hit.transform.gameObject.tag == "Enemy" || hit.transform.gameObject.tag == "Limb")
                     {
                         Instantiate(_bloodVFX, hit.point, new Quaternion(0, 0, 0, 0));
+                        hit.transform.gameObject.GetComponentInParent<EnemyManager_scr>()._EDamage(1);
                     } //if collided but not an enemy create dust particles
                     else
                     {
@@ -99,6 +117,8 @@ public class GunManager_scr : MonoBehaviour
         //on keypress change the rotaition the weapon fires in
         if (Input.GetKeyDown(KeyCode.E))
         {
+            ad.clip = _switchPos;
+            ad.Play();
             vert = !vert;
         }
         //horizontal shot

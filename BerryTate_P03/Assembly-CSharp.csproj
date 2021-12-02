@@ -626,6 +626,15 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>D:/Repositories/BerryTate_P03_Repository/BerryTate_P03/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Toolchain.Win-x86_64-Linux-x86_64">
+ <HintPath>D:/Repositories/BerryTate_P03_Repository/BerryTate_P03/Library/ScriptAssemblies/Unity.Toolchain.Win-x86_64-Linux-x86_64.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Sysroot.Linux_x86_64">
+ <HintPath>D:/Repositories/BerryTate_P03_Repository/BerryTate_P03/Library/ScriptAssemblies/Unity.Sysroot.Linux_x86_64.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.SysrootPackage.Editor">
+ <HintPath>D:/Repositories/BerryTate_P03_Repository/BerryTate_P03/Library/ScriptAssemblies/Unity.SysrootPackage.Editor.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>
